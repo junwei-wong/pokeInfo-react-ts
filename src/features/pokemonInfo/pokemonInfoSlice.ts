@@ -1,17 +1,6 @@
 // Need to use the React-specific entry point to import createApi
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
-
-interface Pokemon {
-  name: string
-  url: string
-}
-
-interface PokeApiResponse {
-  count: number
-  next: string | null
-  previous: string | null
-  results: Pokemon[]
-}
+import type { PokeApiResponse, Pokemon } from "../../app/types"
 
 // Define a service using a base URL and expected endpoints
 export const pokemonInfoApiSlice = createApi({
@@ -22,6 +11,7 @@ export const pokemonInfoApiSlice = createApi({
       query: name => ({
         url: `pokemon/${name}`,
       }),
+      transformResponse: (response: Pokemon) => response,
     }),
     getPokemonListByIndex: builder.query({
       query: ({ genStart, genEnd }) => ({
@@ -40,6 +30,7 @@ export const pokemonInfoApiSlice = createApi({
 // auto-generated based on the defined endpoints
 export const {
   useGetPokemonByNameQuery,
+  useLazyGetPokemonByNameQuery,
   useGetPokemonListByIndexQuery,
   useLazyGetPokemonListByIndexQuery,
 } = pokemonInfoApiSlice
