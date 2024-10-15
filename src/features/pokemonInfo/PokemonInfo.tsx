@@ -20,7 +20,7 @@ const PokemonInfo = () => {
     useLazyGetPokemonByNameQuery()
 
   return (
-    <div className={style.content}>
+    <div className="outline-gray-950 p-1 flex flex-col">
       <PokemonSelector pokemons={pokemons} triggerPokeApi={triggerPokeApi} />
       {pokemonInfoData.name ? (
         <InfoDetails pokemonInfo={pokemonInfoData} />

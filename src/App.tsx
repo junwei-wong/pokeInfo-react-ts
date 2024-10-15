@@ -1,10 +1,9 @@
-import "./App.css"
 import { GenSelector } from "./features/genSelector/GenSelector"
 import PokemonInfo from "./features/pokemonInfo/PokemonInfo"
 
 const App = () => {
   return (
-    <div className="App">
+    <div className="flex justify-center items-center flex-col gap-1 m-1">
       <GenSelector />
       <PokemonInfo />
     </div>

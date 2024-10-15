@@ -12,10 +12,19 @@ const PokemonSelector = ({
   return (
     <>
       <label htmlFor="pokemon">Choose your pokemon from the list: </label>
-      <select name="pokemon_list" id="pokemon_list" onChange={onChangeHandler}>
+      <select
+        className="capitalize border-gray-900 border-2 rounded w-fit"
+        name="pokemon_list"
+        id="pokemon_list"
+        onChange={onChangeHandler}
+      >
         <option value="">Select</option>
         {pokemons.map((pokemon, index) => (
-          <option key={pokemon.name} value={pokemon.name}>
+          <option
+            key={pokemon.name}
+            value={pokemon.name}
+            className="capitalize"
+          >
             {index + 1}. {pokemon.name}
           </option>
         ))}
