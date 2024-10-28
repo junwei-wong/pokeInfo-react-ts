@@ -1,13 +1,8 @@
-import { GenSelector } from "./features/genSelector/GenSelector"
-import PokemonInfo from "./features/pokemonInfo/PokemonInfo"
+import { RouterProvider } from "react-router-dom"
+import { router } from "./app/routes/routers"
 
 const App = () => {
-  return (
-    <div className="flex justify-center items-center flex-col gap-1 m-1">
-      <GenSelector />
-      <PokemonInfo />
-    </div>
-  )
+  return <RouterProvider router={router} />
 }
 
 export default App

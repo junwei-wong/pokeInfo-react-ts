@@ -7,12 +7,12 @@ import {
   useLazyGetPokemonByNameQuery,
 } from "./pokemonInfoSlice"
 import PokemonSelector from "../pokemonSelector/PokemonSelector"
-import type { Pokemon } from "../../app/types"
+import type { Name, Pokemon } from "../../app/types"
 
 const PokemonInfo = () => {
   const genStart = useAppSelector(selectGenStart)
   const genEnd = useAppSelector(selectGenEnd)
-  const { data: pokemons = [], isFetching } = useGetPokemonListByIndexQuery({
+  const { data: pokemons = [] as Name[] } = useGetPokemonListByIndexQuery({
     genStart,
     genEnd,
   })
@@ -25,12 +25,12 @@ const PokemonInfo = () => {
       {pokemonInfoData.name ? (
         <InfoDetails pokemonInfo={pokemonInfoData} />
       ) : null}
-      {isFetching ? "Loading" : null}
     </div>
   )
 }
 
 const InfoDetails = ({ pokemonInfo }: { pokemonInfo: Pokemon }) => {
+  const sprites = ['']
   return (
     <>
       <section id="cries">
@@ -56,7 +56,7 @@ const InfoDetails = ({ pokemonInfo }: { pokemonInfo: Pokemon }) => {
           <tbody>
             <tr>
               <td>
-                <div>
+                <div >
                   <img
                     loading="lazy"
                     src={pokemonInfo?.sprites?.front_default}

@@ -1,5 +1,4 @@
 import { useAppDispatch } from "../../app/hooks"
-import styles from "./GenSelector.module.css"
 import { selectByGeneration } from "./genSelectorSlice"
 
 const generations = [1, 2, 3, 4, 5, 6]
