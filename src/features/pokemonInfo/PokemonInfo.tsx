@@ -1,5 +1,3 @@
-// import { useSelector } from "react-redux"
-import style from "./PokemonInfo.module.css"
 import { selectGenEnd, selectGenStart } from "../genSelector/genSelectorSlice"
 import { useAppSelector } from "../../app/hooks"
 import {
@@ -30,7 +28,6 @@ const PokemonInfo = () => {
 }
 
 const InfoDetails = ({ pokemonInfo }: { pokemonInfo: Pokemon }) => {
-  const sprites = ['']
   return (
     <>
       <section id="cries">
@@ -46,7 +43,7 @@ const InfoDetails = ({ pokemonInfo }: { pokemonInfo: Pokemon }) => {
       </section>
       <section id="sprites">
         <h1>Sprites</h1>
-        <table className={style.table}>
+        <table>
           <thead>
             <tr>
               <th>Front</th>
@@ -56,7 +53,7 @@ const InfoDetails = ({ pokemonInfo }: { pokemonInfo: Pokemon }) => {
           <tbody>
             <tr>
               <td>
-                <div >
+                <div>
                   <img
                     loading="lazy"
                     src={pokemonInfo?.sprites?.front_default}
