@@ -1,33 +1,6 @@
-import { selectGenEnd, selectGenStart } from "../genSelector/genSelectorSlice"
-import { useAppSelector } from "../../app/hooks"
-import {
-  useGetPokemonListByIndexQuery,
-  useLazyGetPokemonByNameQuery,
-} from "./pokemonInfoSlice"
-import PokemonSelector from "../pokemonSelector/PokemonSelector"
-import type { Name, Pokemon } from "../../app/types"
+import type { Pokemon } from "../../app/types"
 
-const PokemonInfo = () => {
-  const genStart = useAppSelector(selectGenStart)
-  const genEnd = useAppSelector(selectGenEnd)
-  const { data: pokemons = [] as Name[] } = useGetPokemonListByIndexQuery({
-    genStart,
-    genEnd,
-  })
-  const [triggerPokeApi, { data: pokemonInfoData = {} as Pokemon }] =
-    useLazyGetPokemonByNameQuery()
-
-  return (
-    <div className="outline-gray-950 p-1 flex flex-col">
-      <PokemonSelector pokemons={pokemons} triggerPokeApi={triggerPokeApi} />
-      {pokemonInfoData.name ? (
-        <InfoDetails pokemonInfo={pokemonInfoData} />
-      ) : null}
-    </div>
-  )
-}
-
-const InfoDetails = ({ pokemonInfo }: { pokemonInfo: Pokemon }) => {
+const PokemonInfo = ({ pokemonInfo }: { pokemonInfo: Pokemon }) => {
   return (
     <>
       <section id="cries">
@@ -46,12 +19,14 @@ const InfoDetails = ({ pokemonInfo }: { pokemonInfo: Pokemon }) => {
         <table>
           <thead>
             <tr>
+              <th></th>
               <th>Front</th>
               <th>Back</th>
             </tr>
           </thead>
           <tbody>
             <tr>
+              <td>Default</td>
               <td>
                 <div>
                   <img
@@ -72,6 +47,7 @@ const InfoDetails = ({ pokemonInfo }: { pokemonInfo: Pokemon }) => {
               </td>
             </tr>
             <tr>
+              <td>Shiny</td>
               <td>
                 <div>
                   <img

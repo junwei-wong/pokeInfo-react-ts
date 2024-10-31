@@ -5,7 +5,7 @@ const generations = [1, 2, 3, 4, 5, 6]
 
 const Options = generations.map(gen => (
   <option key={gen} value={gen}>
-    Gen {gen}
+    Generation {gen}
   </option>
 ))
 
@@ -19,9 +19,13 @@ export const GenSelector = () => {
     )
 
   return (
-    <div className="flex gap-1 justify-center items-center">
-      <label htmlFor="gen-select">Choose generation</label>
-      <select name="gen-select" id="gen-select" onChange={onChangeHandler}>
+    <div>
+      <select
+        name="gen-select"
+        id="gen-select"
+        onChange={onChangeHandler}
+        className="outline-dotted rounded-sm"
+      >
         {Options}
       </select>
     </div>
