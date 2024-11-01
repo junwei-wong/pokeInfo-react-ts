@@ -4,7 +4,7 @@ import react from "@vitejs/plugin-react"
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: "/pokeInfo-react-ts",
+  base: "/pokeInfo-react-ts/",
   server: {
     open: true,
   },
