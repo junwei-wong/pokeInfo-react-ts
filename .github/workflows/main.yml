@@ -21,6 +21,11 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run test
+        run: npm run test       
   # Single deploy job since we're just deploying
   deploy:
     environment:
