@@ -18,7 +18,6 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@master
         with:
-          ref: ${{ github.ref }}
           node-version: 20
 
       - name: Install dependencies
@@ -30,7 +29,6 @@ jobs:
       - name: Upload build files
         uses: actions/upload-artifact@master
         with:
-          ref: ${{ github.ref }}
           name: production-files
           path: ./dist
 
@@ -44,13 +42,11 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@master
         with:
-          ref: ${{ github.ref }}
           name: production-files
           path: ./dist
 
       - name: Deploy to Github Pages
-        uses: peaceiris/actions-gh-pages@master
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          ref: ${{ github.ref }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
